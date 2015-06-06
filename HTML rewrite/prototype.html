@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Prototype for algorithm testing</title>
+	<script src="js/processor.js"></script>
+	<!-- 	TODO: this sould be an external stylesheet, but I don't have internet access, and it didn't want to work for me :( 
+-->
+<style type="text/css"> 
+	td {
+		border-style: solid;
+		border-width: 1pt;
+		text-align: center;
+	}
+</style> 
+</head>
+<body>
+
+	Input (csv of roundnumber, r1, r2, b1, b2):
+	<br>
+	<textarea id="csv_input" style="width:200px; height:200px">1,20,30,40,50
+2,30,20,50,40
+3,50,40,30,20
+4,50,20,30,40
+</textarea>
+	<br>
+	<button onclick="test_process()">Process</button>
+	<br><br>
+	Output:<br>
+	<div style="color:darkgreen" id="test_output">
+
+	</div>
+
+</body>
+</html>
