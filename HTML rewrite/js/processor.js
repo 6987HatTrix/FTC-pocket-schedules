@@ -23,14 +23,14 @@ function processCSVrounds (csv) {
 
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match("([0-9]+,){4}[0-9]+")){ //This row looks like a csv row with at least five numbers
+		if (rows[i].match("([0-9]+,)([0-9,*]+,){3}[0-9,*]+")){ //This row looks like a csv row with at least five numbers
 			var row = rows[i].split(","); 
 			//TODO: These parseInt calls should be applied with a .map to the array, but it wasn't working :(
 				var n = parseInt(row[0])
-				var r1 = parseInt(row[1])
-				var r2 = parseInt(row[2])
-				var b1 = parseInt(row[3])
-				var b2 = parseInt(row[4])
+				var r1 = parseInt(row[1].replace('*', ''))
+				var r2 = parseInt(row[2].replace('*', ''))
+				var b1 = parseInt(row[3].replace('*', ''))
+				var b2 = parseInt(row[4].replace('*', ''))
 
 				addRecord(r1, n, "Red 1", r2, b1, b2);
 				addRecord(r2, n, "Red 2", r1, b1, b2);
