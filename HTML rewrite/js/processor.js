@@ -2,11 +2,12 @@
 
 function test_process () {
 	var results = processCSVrounds(document.getElementById('csv_input').value)
+	var teamNames = processNames(document.getElementById('csv_teams').value)
 
 	document.getElementById('test_output').innerText = 
 	toTextOutput(results);
 
-	document.getElementById('test_output').appendChild(toTableOutput(results))
+	document.getElementById('test_output').appendChild(toTableOutput(results, teamNames))
 }
 
 function processCSVrounds (csv) {
@@ -46,15 +47,23 @@ function processCSVrounds (csv) {
 	return records;
 }
 
-function inventTeamNames(){
-	var adjectives = "Mighty Roaring Flying Diving Running Nutty Robotic New Reformed".split(' ')
-	var nouns = "Robots Team Monkeys Bears Cats Flies Children Monsters Ravens".split(' ')
+function processNames(csv){
+	var teamNames = Object();
+	
+	var rows = csv.split('\n');
+	for (var i = 0; i < rows.length; i++) {
+		if (rows[i].match("[0-9]+([0-9]+,)")){
+			var row = rows[i].split(","); 
+			var num = parseInt(row[0])
+			var name = row[1]
 
-	var teamNames = {}
-	for (var i = 0; i < adjectives.length*nouns.length; i++) {
-		teamNames[i] = adjectives[i%adjectives.length] + ' ' + nouns[Math.floor(i/adjectives.length)]
+			teamNames[num] = name
+		}else{
+			if (rows[i].length > 0) console.error("Line "+(i+1)+" is odd: "+rows[i])
+		}
 	};
 
+	console.log(teamNames)
 	return teamNames;
 }
 
@@ -73,24 +82,30 @@ function toTextOutput (records) {
 }
 
 function toTableOutput (records, teamNames) {
-	if (!teamNames) teamNames = inventTeamNames();
-
 	var div = document.createElement('div')
 
 	for (var j = 0; j < Object.keys(records).length; j++) {
 		Object.keys(records)[j]
 
-		var teamNum = Object.keys(records)[0]
+		var teamNum = Object.keys(records)[j]
 		var record = records[teamNum]
+		
+		var title = document.createElement('p')
+		title.innerText = "Pocket Schedule for " + teamNum + ": " + teamNames[teamNum]
 
 		var table = document.createElement('table')
+		var header = document.createElement('tr');
+		header.innerHTML = "<td>Round #</td><td>Partner</td><td>Rival 1</td><td>Rival 2</td>"
+		
+		table.appendChild(header)
+		
 		for (var i = 0; i < record.length; i++) {
 			var row = document.createElement('tr');
 
 			//TODO: This function should also take a "color" argument
 			function append(major, minor){ 
-				if(minor == undefined) 
-					minor = teamNames[major]
+				if(minor == undefined){
+					minor = teamNames[major]}
 
 				var cell = document.createElement('td');
 				var d1 = document.createElement('p');
@@ -112,6 +127,7 @@ function toTableOutput (records, teamNames) {
 
 			table.appendChild(row)
 		};
+		div.appendChild(title)
 		div.appendChild(table)
 		div.appendChild(document.createElement('br'))
 	}
