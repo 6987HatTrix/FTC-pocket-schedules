@@ -4,8 +4,7 @@ function test_process () {
 	var results = processCSVrounds(document.getElementById('csv_input').value)
 	var teamNames = processNames(document.getElementById('csv_teams').value)
 
-	document.getElementById('test_output').innerText = 
-	toTextOutput(results);
+	document.getElementById('test_output').innerText = toTextOutput(results);
 
 	document.getElementById('test_output').appendChild(toTableOutput(results, teamNames))
 }
@@ -23,7 +22,7 @@ function processCSVrounds (csv) {
 
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match("([0-9]+,)([0-9,*]+,){3}[0-9,*]+")){ //This row looks like a csv row with at least five numbers
+		if (rows[i].match(/([0-9]+,)([0-9,*]+,){3}[0-9,*]+/)){ //This row looks like a csv row with at least five numbers
 			var row = rows[i].split(","); 
 			//TODO: These parseInt calls should be applied with a .map to the array, but it wasn't working :(
 				var n = parseInt(row[0])
@@ -52,14 +51,14 @@ function processNames(csv){
 	
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match("[0-9]+([0-9]+,)")){
+		if (rows[i].match(/[0-9]+([0-9]+,)/)){
 			var row = rows[i].split(","); 
 			var num = parseInt(row[0])
 			var name = row[1]
 
 			teamNames[num] = name
 		}else{
-			if (rows[i].length > 0) console.error("Line "+(i+1)+" is odd: "+rows[i])
+			if (rows[i].length > 0) console.error("Line "+(i+1)+" is strange: "+rows[i])
 		}
 	};
 
