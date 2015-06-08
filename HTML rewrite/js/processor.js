@@ -6,7 +6,7 @@ function test_process () {
 
 	document.getElementById('test_output').innerText = toTextOutput(results);
 
-	document.getElementById('test_output').appendChild(toTableOutput(results, teamNames))
+	$('#test_output').append(toTableOutput(results, teamNames))
 }
 
 function processCSVrounds (csv) {
@@ -81,54 +81,54 @@ function toTextOutput (records) {
 }
 
 function toTableOutput (records, teamNames) {
-	var div = document.createElement('div')
+	var div = $("<div>")
 
 	for (var j = 0; j < Object.keys(records).length; j++) {
 		Object.keys(records)[j]
 
-		var teamNum = Object.keys(records)[j]
+		var teamNum = Object.keys(records)[j] //TODO: this should be explicitly sorted
 		var record = records[teamNum]
 		
-		var title = document.createElement('p')
-		title.innerText = "Pocket Schedule for " + teamNum + ": " + teamNames[teamNum]
+		var title = $('<p>')
+		title.text("Pocket Schedule for " + teamNum + ": " + teamNames[teamNum])
 
-		var table = document.createElement('table')
-		var header = document.createElement('tr');
-		header.innerHTML = "<td>Round #</td><td>Partner</td><td>Rival 1</td><td>Rival 2</td>"
+		var table = $("<table>")
+		var header = $("<tr>")
+		header.html("<td>Round #</td><td>Partner</td><td>Rival 1</td><td>Rival 2</td>")
 		
-		table.appendChild(header)
+		table.append(header)
 		
 		for (var i = 0; i < record.length; i++) {
-			var row = document.createElement('tr');
+			var row = $('<tr>');
 
-			//TODO: This function should also take a "color" argument
-			function append(major, minor){ 
+			//TODO: This function should also take a "color" argument, and apply that class to the cell
+			function append(major, minor, color){ 
 				if(minor == undefined){
 					minor = teamNames[major]}
 
-				var cell = document.createElement('td');
-				var d1 = document.createElement('p');
+				var cell = $('<td>').addClass('record_cell').addClass('color_'+color);
+				var d1 = $('<div>').addClass('major');
 				//d1.classlist.push('major')
-				d1.innerText = major
-				cell.appendChild(d1)
+				d1.text(major)
+				cell.append(d1)
 
-				var d2 = document.createElement('p');
+				var d2 = $('<div>').addClass('minor');
 				//d2.classlist.push('minor')
-				d2.innerText = minor
-				cell.appendChild(d2)
+				d2.text(minor)
+				cell.append(d2)
 
-				row.appendChild(cell)
+				row.append(cell)
 			}
 			append(record[i].roundnum, record[i].role);
 			append(record[i].alliancemate);
 			append(record[i].opponents[0]);
 			append(record[i].opponents[1]);
 
-			table.appendChild(row)
+			table.append(row)
 		};
-		div.appendChild(title)
-		div.appendChild(table)
-		div.appendChild(document.createElement('br'))
+		div.append(title)
+		div.append(table)
+		div.append($('<br>'))
 	}
 	return div
 }
