@@ -22,7 +22,7 @@ function processCSVrounds (csv) {
 
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match(/([0-9]+,)([0-9,*]+,){3}[0-9,*]+/)){ //This row looks like a csv row with at least five numbers
+		if (rows[i].match(/([0-9]+,)([0-9]+\*?,){3}[0-9]+\*?/)){ //This row looks like a csv row with at least five numbers
 			var row = rows[i].split(","); 
 			//TODO: These parseInt calls should be applied with a .map to the array, but it wasn't working :(
 				var n = parseInt(row[0])
@@ -73,7 +73,7 @@ function toTextOutput (records) {
 			return key+" is " + round.role + " with " + round.alliancemate + " in round " + round.roundnum + 
 			" against " + round.opponents[0] + " and " + round.opponents[1];
 		})
-		console.log(list)
+		//console.log(list)
 		return list.join('\n')
 	})
 
