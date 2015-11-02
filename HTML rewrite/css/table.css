@@ -26,19 +26,21 @@ td {
 
 table.teamSchedule {
     border-spacing: 0;
+    width: 100%;
+}
+
+.scheduleTitle {
+    text-align: center;
+    color: black;
+}
+
+.recipient {
+    font-size: 22pt;
+}
+
+.fullSchedule {
     width: 3.5in;
 }
-
-/* Horizontal spacing */
-td.col1 {
-    /* width: 20%; */
-}
-
-td.othercol {
-    /* width: .9in; */
-    /* max-width: 26.6666%; */
-}
-
 
 /* Color management */
 td.record_cell.color_blue {
@@ -56,4 +58,9 @@ td.record_cell {
 
 td.record_cell.color_red {
     color: red;
+}
+
+/* Printing */
+@media print {
+    table.teamSchedule {page-break-inside: avoid;}
 }

@@ -81,7 +81,7 @@ function toTextOutput (records) {
 }
 
 function toTableOutput (records, teamNames) {
-	var div = $("<div>")
+	var div = $("<div>").addClass('fullSchedule')
 
 	for (var j = 0; j < Object.keys(records).length; j++) {
 		Object.keys(records)[j]
@@ -89,8 +89,9 @@ function toTableOutput (records, teamNames) {
 		var teamNum = Object.keys(records)[j] //TODO: this should be explicitly sorted
 		var record = records[teamNum]
 		
-		var title = $('<p>').addClass('scheduleTitle')
-		title.text("Pocket Schedule for " + teamNum + ": " + teamNames[teamNum])
+		var title = $('<div>').addClass('scheduleTitle')
+		.append($('<div>').addClass('smallTitle').text('Pocket schedule from HatTrix&TBD to'))
+		.append($('<div>').addClass('recipient').text(teamNum + ": " + teamNames[teamNum]))
 
 		var table = $("<table>").addClass('teamSchedule')
 		var header = $("<tr>").addClass('header_row')
