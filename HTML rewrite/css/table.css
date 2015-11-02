@@ -48,7 +48,7 @@ td.record_cell.color_blue {
 td.record_cell {
     border-color: black;
     vertical-align: top;
-    max-width: .9in;
+    max-width: .8in;
     overflow-wrap: break-word;
     overflow: hidden;
     max-height: .5in;
