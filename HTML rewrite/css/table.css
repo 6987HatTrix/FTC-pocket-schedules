@@ -38,8 +38,9 @@ table.teamSchedule {
     font-size: 22pt;
 }
 
-.fullSchedule {
-    width: 3.5in;
+.oneSchedule {
+    width: 3.1666666in; /* (11 - 6*.25) / 3 */
+    height: 3.75in; /* (8.5 - 4*.25) / 2 */
 }
 
 /* Color management */
@@ -62,5 +63,12 @@ td.record_cell.color_red {
 
 /* Printing */
 @media print {
-    table.teamSchedule {page-break-inside: avoid;}
+    div.oneSchedule {page-break-inside: avoid;}
+}
+
+@media print {
+    @page {
+        size: letter landscape;
+        margin: 0.25in;
+    }
 }

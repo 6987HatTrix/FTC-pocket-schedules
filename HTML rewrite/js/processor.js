@@ -6,7 +6,7 @@ function test_process () {
 
 	document.getElementById('test_output').innerText = toTextOutput(results);
 
-	$('#test_output').append(toTableOutput(results, teamNames))
+	$('#test_output').append(toTablesOutput(results, teamNames))
 }
 
 function processCSVrounds (csv) {
@@ -80,10 +80,11 @@ function toTextOutput (records) {
 	return output.join('\n\n')
 }
 
-function toTableOutput (records, teamNames) {
-	var div = $("<div>").addClass('fullSchedule')
+function toTablesOutput (records, teamNames) {
+	var list = []
 
 	for (var j = 0; j < Object.keys(records).length; j++) {
+		var div = $("<div>").addClass('oneSchedule')
 		Object.keys(records)[j]
 
 		var teamNum = Object.keys(records)[j] //TODO: this should be explicitly sorted
@@ -134,7 +135,7 @@ function toTableOutput (records, teamNames) {
 		};
 		div.append(title)
 		div.append(table)
-		div.append($('<br>'))
+		list.push(div)
 	}
-	return div
+	return list
 }
