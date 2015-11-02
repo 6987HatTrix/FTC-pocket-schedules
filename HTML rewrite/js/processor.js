@@ -92,13 +92,12 @@ function toTableOutput (records, teamNames) {
 		var title = $('<p>')
 		title.text("Pocket Schedule for " + teamNum + ": " + teamNames[teamNum])
 
-		var table = $("<table>")
+		var table = $("<table>").addClass('teamSchedule')
 		var header = $("<tr>").addClass('header_row')
 		.append($("<td>").text('Round #').addClass('col1'))
 		.append($("<td>").text('Partner').addClass('othercol'))
 		.append($("<td>").text('Rival 1').addClass('othercol'))
 		.append($("<td>").text('Rival 2').addClass('othercol'))
-		//header.html("<td>Round #</td><td>Partner</td><td>Rival 1</td><td>Rival 2</td>")
 		
 		table.append(header)
 		
