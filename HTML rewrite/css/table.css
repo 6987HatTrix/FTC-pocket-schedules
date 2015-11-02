@@ -1,7 +1,8 @@
 tr.header_row {
     line-height: 0;
-    height: 30pt;
-    font-size: 18pt;
+    height: 20pt;
+    font-size: 13pt;
+    font-weight: bold;
 }
 
 td {
@@ -12,20 +13,30 @@ td {
     /* border-collapse: collapse; */
 }
 .major {
-    font-size: 20pt;
+    font-size: 18pt;
     font-weight: bold;
+    font-family: monospace;
 }
 .minor {
     font-size: 12pt;
     font-style: italic;
+    overflow: overlay;
+    max-height: 28pt;
 }
 
 table.teamSchedule {
     border-spacing: 0;
+    width: 3.5in;
 }
 
+/* Horizontal spacing */
 td.col1 {
-    width: 20%;
+    /* width: 20%; */
+}
+
+td.othercol {
+    /* width: .9in; */
+    /* max-width: 26.6666%; */
 }
 
 
@@ -36,6 +47,11 @@ td.record_cell.color_blue {
 
 td.record_cell {
     border-color: black;
+    vertical-align: top;
+    max-width: .9in;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    max-height: .5in;
 }
 
 td.record_cell.color_red {
