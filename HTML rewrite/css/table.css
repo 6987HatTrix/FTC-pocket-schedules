@@ -27,3 +27,17 @@ table.teamSchedule {
 td.col1 {
     width: 20%;
 }
+
+
+/* Color management */
+td.record_cell.color_blue {
+    color: blue;
+}
+
+td.record_cell {
+    border-color: black;
+}
+
+td.record_cell.color_red {
+    color: red;
+}

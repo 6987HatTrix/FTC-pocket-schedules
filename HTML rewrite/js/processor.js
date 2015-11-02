@@ -89,7 +89,7 @@ function toTableOutput (records, teamNames) {
 		var teamNum = Object.keys(records)[j] //TODO: this should be explicitly sorted
 		var record = records[teamNum]
 		
-		var title = $('<p>')
+		var title = $('<p>').addClass('scheduleTitle')
 		title.text("Pocket Schedule for " + teamNum + ": " + teamNames[teamNum])
 
 		var table = $("<table>").addClass('teamSchedule')
@@ -104,8 +104,7 @@ function toTableOutput (records, teamNames) {
 		for (var i = 0; i < record.length; i++) {
 			var row = $('<tr>');
 
-			//TODO: This function should also take a "color" argument, and apply that class to the cell
-			function append(major, minor, color){ 
+			function append(color, major, minor){ 
 				if(minor == undefined){
 					minor = teamNames[major]}
 
@@ -122,10 +121,13 @@ function toTableOutput (records, teamNames) {
 
 				row.append(cell)
 			}
-			append(record[i].roundnum, record[i].role);
-			append(record[i].alliancemate);
-			append(record[i].opponents[0]);
-			append(record[i].opponents[1]);
+			var myColor = record[i].role.split(' ')[0].toLowerCase()
+			var otherColor = {'red':'blue', 'blue':'red'}[myColor]
+
+			append(myColor, record[i].roundnum, record[i].role);
+			append(myColor, record[i].alliancemate);
+			append(otherColor, record[i].opponents[0]);
+			append(otherColor, record[i].opponents[1]);
 
 			table.append(row)
 		};
