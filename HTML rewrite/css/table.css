@@ -1,0 +1,19 @@
+tr.header_row {
+    line-height: 0;
+    height: 30pt;
+    font-size: 20pt;
+}
+
+td {
+    border-style: solid;
+    border-width: 1pt;
+    text-align: center;
+}
+.major {
+    font-size: 20pt;
+    font-weight: bold;
+}
+.minor {
+    font-size: 12pt;
+    font-style: italic;
+}
