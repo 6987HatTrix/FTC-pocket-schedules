@@ -4,9 +4,9 @@ function test_process () {
 	var results = processCSVrounds(document.getElementById('csv_input').value)
 	var teamNames = processNames(document.getElementById('csv_teams').value)
 
-	document.getElementById('test_output').innerText = toTextOutput(results);
+	//document.getElementById('test_output').innerText = toTextOutput(results);
 
-	$('#test_output').append(toTablesOutput(results, teamNames))
+	$('#test_output').empty().append(toTablesOutput(results, teamNames))
 }
 
 function processCSVrounds (csv) {
