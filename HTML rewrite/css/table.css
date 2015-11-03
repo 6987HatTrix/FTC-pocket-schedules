@@ -18,8 +18,9 @@ table.teamSchedule td {
     border-width: 1pt;
     text-align: center;
     padding: 0;
-    /* border-collapse: collapse; */
+    border-color: #777;
 }
+
 .major {
     font-size: 18pt;
     font-weight: bold;
@@ -44,6 +45,7 @@ table.teamSchedule {
     text-align: center;
     padding: 0;
     border-spacing: 0;
+    border-collapse: collapse;
     width: 100%;
 }
 
@@ -140,6 +142,35 @@ td.record_cell.color_red {
 
 .rowcount7 .major {
     font-size: 17pt;
+}
+
+.rowcount8 .major {
+    font-size: 16pt;
+    margin-top: -2pt;
+}
+
+.rowcount8 .minor {
+    font-size: 10pt;
+    max-height: 18.667;
+}
+
+.rowcount9 .major {
+    font-size: 13pt;
+    margin-bottom: -4.5pt;
+}
+
+.rowcount9 .minor {
+    font-size: 10pt;
+    max-height: 18.66667;
+}
+
+.rowcount9 tr.header_row {
+    height: 13pt;
+    font-size: 11pt;
+}
+
+.rowcount9 .recipient {
+    font-size: 20pt;
 }
 
 /* Printing */
