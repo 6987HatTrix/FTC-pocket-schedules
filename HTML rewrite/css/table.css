@@ -1,11 +1,19 @@
 tr.header_row {
     line-height: 0;
     height: 20pt;
-    font-size: 13pt;
+    font-size: 12pt;
     font-weight: bold;
 }
 
-td {
+td.bigCell {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border: none;
+}
+
+
+table.teamSchedule td {
     border-style: solid;
     border-width: 1pt;
     text-align: center;
@@ -16,31 +24,57 @@ td {
     font-size: 18pt;
     font-weight: bold;
     font-family: monospace;
+    line-height: 1;
+    margin-top: -1pt;
+    margin-bottom: -5pt;
 }
 .minor {
     font-size: 12pt;
     font-style: italic;
-    overflow: overlay;
+    overflow: visible;
     max-height: 28pt;
+    line-height: 0.7;
+    margin-top: 2pt;
+    margin-bottom: 1pt;
 }
 
 table.teamSchedule {
+    border-style: solid;
+    border-width: 1pt;
+    text-align: center;
+    padding: 0;
     border-spacing: 0;
     width: 100%;
 }
 
 .scheduleTitle {
     text-align: center;
-    color: black;
+    /* color: black; */
+}
+
+.smallTitle {
+    line-height: 0pt;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    font-size: 12pt;
 }
 
 .recipient {
     font-size: 22pt;
+    line-height: 1;
+    color: #777;
+    margin-top: -3pt;
+    margin-bottom: -1pt;
 }
 
 .oneSchedule {
-    width: 3.1666666in; /* (11 - 6*.25) / 3 */
-    height: 3.75in; /* (8.5 - 4*.25) / 2 */
+    width: 3.1666666in;/* (11 - 6*.25) / 3 */
+    height: 3.75in;/* (8.5 - 4*.25) / 2 */
+    overflow: hidden;
+}
+
+td.col1 {
+    width: 46pt;
 }
 
 /* Color management */
@@ -63,12 +97,19 @@ td.record_cell.color_red {
 
 /* Printing */
 @media print {
-    div.oneSchedule {page-break-inside: avoid;}
+    div.printPage {page-break-inside: avoid;}
 }
 
 @media print {
     @page {
         size: letter landscape;
-        margin: 0.25in;
+        margin: 0in;
     }
+}
+
+.printpage {
+    max-height: 8in;
+    max-width: 10.5in;
+    padding: 0.25in 0.25in 0 0.25in;
+    overflow: hidden;
 }

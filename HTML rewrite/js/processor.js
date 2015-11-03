@@ -80,6 +80,74 @@ function toTextOutput (records) {
 	return output.join('\n\n')
 }
 
+function makePage(tables, duplicity) {
+	if (duplicity === undefined){
+		duplicity = 1;
+	}
+
+	// Initialize variables
+	var page 	= $('<div>').addClass('printpage');
+	var bigtable= $('<table>').addClass('bigtable');
+
+	var rows = [$('<tr>').addClass('bigrow'), $('<tr>').addClass('bigrow')];
+
+	var cells = [];
+	for (var i = 0; i < 6; i++){
+		cells.push($('<td>').addClass('bigcell'));
+	}
+	
+	// Build table structure
+	if (duplicity == 3){
+		// We want identical cells to appear next to each other horizontally
+		rows[0].append(cells.slice(0,3))
+		rows[1].append(cells.slice(3,6))
+	}else{
+		// We want identical cells to appear next to each other vertically
+		rows[0].append(cells[0]).append(cells[2]).append(cells[4])
+		rows[1].append(cells[1]).append(cells[3]).append(cells[5])
+	}
+
+	bigtable.append(rows)
+	page.append(bigtable)
+
+	// Fill in cells
+	for (var i = 0; i < tables.length; i++){
+		cells[i].append(tables[i]);
+	}
+	return page
+}
+
+function wrapTables(list, numper, collate) {
+	var pages = [];
+
+	if (collate){
+		var n = Math.ceil(list.length / 6) //Number of unique pages needed
+		for (var i = 0; i < n; i++){
+			var page = makePage(list.slice(6*i, 6*(i+1)), 1)
+			for (var j = 0; j < numper; j++){
+				pages.push(page.clone())
+			}
+		}
+	}else{
+		var newlist = [];
+
+		for (var i = 0; i < list.length; i++){
+			for (var j = 0; j < numper; j++){
+				newlist.push(list[i].clone())
+			}
+		}
+
+
+		var n = Math.ceil(newlist.length / 6) //Number of unique pages needed
+		for (var i = 0; i < n; i++){
+			var page = makePage(newlist.slice(6*i, 6*(i+1)), numper)
+			pages.push(page)
+		}
+	}
+	
+	return pages
+}
+
 function toTablesOutput (records, teamNames) {
 	var list = []
 
@@ -137,5 +205,5 @@ function toTablesOutput (records, teamNames) {
 		div.append(table)
 		list.push(div)
 	}
-	return list
+	return wrapTables(list, 3, false)
 }
