@@ -151,11 +151,13 @@ function wrapTables(list, numper, collate) {
 function toTablesOutput (records, teamNames) {
 	var list = []
 
-	for (var j = 0; j < Object.keys(records).length; j++) {
-		var div = $("<div>").addClass('oneSchedule')
-		Object.keys(records)[j]
+	var teamList = Object.keys(records);
 
-		var teamNum = Object.keys(records)[j] //TODO: this should be explicitly sorted
+	for (var j = 0; j < teamList.length; j++) {
+		var div = $("<div>").addClass('oneSchedule')
+		teamList[j]
+
+		var teamNum = teamList[j] //TODO: this should be explicitly sorted
 		var record = records[teamNum]
 		
 		var title = $('<div>').addClass('scheduleTitle')
@@ -171,6 +173,16 @@ function toTablesOutput (records, teamNames) {
 		
 		table.append(header)
 		
+		var CSSnumRows = record.length;
+		if (CSSnumRows < 5)
+			CSSnumRows = 5;
+		if (CSSnumRows > 9){
+			console.log('Warning: Team %d has %d rounds listed!', teamNum, record.length);
+			CSSnumRows = 9;
+		}
+
+		div.addClass('rowcount'+CSSnumRows);
+
 		for (var i = 0; i < record.length; i++) {
 			var row = $('<tr>');
 
