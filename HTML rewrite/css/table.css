@@ -32,7 +32,7 @@ table.teamSchedule td {
     font-size: 12pt;
     font-style: italic;
     overflow: visible;
-    max-height: 28pt;
+    /* max-height: 28pt; */
     line-height: 0.7;
     margin-top: 2pt;
     margin-bottom: 1pt;
@@ -100,6 +100,46 @@ td.record_cell {
 
 td.record_cell.color_red {
     color: red;
+}
+
+
+/* Dynamic adjustment */
+
+.rowcount5 .recipient {
+    margin-top: 2pt;
+    margin-bottom: 4pt;
+}
+
+.rowcount5 .header_row {
+    height: 18pt;
+}
+
+.rowcount5 .major {
+    margin-top: 0;
+    margin-bottom: -3pt;
+}
+
+.rowcount5 .minor {
+    line-height: .8;
+    margin-bottom: 3pt;
+    max-height: 21pt;
+}
+
+.rowcount6 .minor {
+    line-height: 0.79;
+    max-height: 18.7pt;
+}
+
+.rowcount6 .major {
+    margin-bottom: -3pt;
+}
+
+.rowcount7 .minor {
+    max-height: 16pt;
+}
+
+.rowcount7 .major {
+    font-size: 17pt;
 }
 
 /* Printing */
