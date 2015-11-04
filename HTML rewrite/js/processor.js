@@ -6,7 +6,7 @@ function test_process () {
 
 	//document.getElementById('test_output').innerText = toTextOutput(results);
 
-	$('#test_output').empty().append(toTablesOutput(results, teamNames))
+	$('#test_output').empty().append(wrapTables(toTablesOutput(results, teamNames), 4, false))
 }
 
 function processCSVrounds (csv) {
@@ -217,5 +217,5 @@ function toTablesOutput (records, teamNames) {
 		div.append(table)
 		list.push(div)
 	}
-	return wrapTables(list, 3, false)
+	return list;
 }
