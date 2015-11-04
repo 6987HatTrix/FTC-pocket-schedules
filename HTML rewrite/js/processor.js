@@ -22,22 +22,23 @@ function processCSVrounds (csv) {
 
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match(/([0-9]+\t)([0-9]+\*?\t){3}[0-9]+\*?/)){ //This row looks like a csv row with at least five numbers
-			var row = rows[i].split("\t"); 
+		var match = rows[i].match(/([0-9]+)\t((?:[0-9]+\*?(?:\t|$)){4})/)
+		if (match){ //This row looks like a csv row with at least five numbers
+			var row = match[2].split("\t"); 
 			//TODO: These parseInt calls should be applied with a .map to the array, but it wasn't working :(
-				var n = parseInt(row[0])
-				var r1 = parseInt(row[1].replace('*', ''))
-				var r2 = parseInt(row[2].replace('*', ''))
-				var b1 = parseInt(row[3].replace('*', ''))
-				var b2 = parseInt(row[4].replace('*', ''))
+			var n = parseInt(match[1])
+			var r1 = parseInt(row[1].replace('*', ''))
+			var r2 = parseInt(row[2].replace('*', ''))
+			var b1 = parseInt(row[3].replace('*', ''))
+			var b2 = parseInt(row[4].replace('*', ''))
 
-				addRecord(r1, n, "Red 1", r2, b1, b2);
-				addRecord(r2, n, "Red 2", r1, b1, b2);
-				addRecord(b1, n, "Blue 1", b2, r1, r2);
-				addRecord(b2, n, "Blue 2", b1, r1, r2);
-			}else{
-				if (rows[i].length > 0) console.error("Line "+(i+1)+" is odd: "+rows[i])
-			}
+			addRecord(r1, n, "Red 1", r2, b1, b2);
+			addRecord(r2, n, "Red 2", r1, b1, b2);
+			addRecord(b1, n, "Blue 1", b2, r1, r2);
+			addRecord(b2, n, "Blue 2", b1, r1, r2);
+		}else{
+			if (rows[i].length > 0) console.error("Line "+(i+1)+" is odd: "+rows[i])
+		}
 
 	};
 
@@ -51,10 +52,10 @@ function processNames(csv){
 	
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match(/[0-9]+([0-9]+\t)/)){
-			var row = rows[i].split("\t"); 
-			var num = parseInt(row[0])
-			var name = row[1]
+		var match = rows[i].match(/([0-9]+)\t([^\t]+)/)
+		if (match){
+			var num = parseInt(match[1])
+			var name = match[2]
 
 			teamNames[num] = name
 		}else{
