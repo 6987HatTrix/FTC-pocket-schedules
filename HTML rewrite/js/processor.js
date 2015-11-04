@@ -6,7 +6,7 @@ function test_process () {
 
 	//document.getElementById('test_output').innerText = toTextOutput(results);
 
-	$('#test_output').empty().append(wrapTables(toTablesOutput(results, teamNames), 4, false))
+	$('#test_output').empty().append(wrapTables(toTablesOutput(results, teamNames), 6, false))
 }
 
 function processCSVrounds (csv) {
@@ -22,8 +22,8 @@ function processCSVrounds (csv) {
 
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match(/([0-9]+,)([0-9]+\*?,){3}[0-9]+\*?/)){ //This row looks like a csv row with at least five numbers
-			var row = rows[i].split(","); 
+		if (rows[i].match(/([0-9]+\t)([0-9]+\*?\t){3}[0-9]+\*?/)){ //This row looks like a csv row with at least five numbers
+			var row = rows[i].split("\t"); 
 			//TODO: These parseInt calls should be applied with a .map to the array, but it wasn't working :(
 				var n = parseInt(row[0])
 				var r1 = parseInt(row[1].replace('*', ''))
@@ -51,8 +51,8 @@ function processNames(csv){
 	
 	var rows = csv.split('\n');
 	for (var i = 0; i < rows.length; i++) {
-		if (rows[i].match(/[0-9]+([0-9]+,)/)){
-			var row = rows[i].split(","); 
+		if (rows[i].match(/[0-9]+([0-9]+\t)/)){
+			var row = rows[i].split("\t"); 
 			var num = parseInt(row[0])
 			var name = row[1]
 
