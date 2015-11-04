@@ -129,7 +129,8 @@ td.record_cell.color_red {
 
 .rowcount6 .minor {
     line-height: 0.79;
-    max-height: 18.7pt;
+    max-height: 24;
+    margin-bottom: 2pt;
 }
 
 .rowcount6 .major {
@@ -137,16 +138,19 @@ td.record_cell.color_red {
 }
 
 .rowcount7 .minor {
-    max-height: 16pt;
+    max-height: 22;
+    line-height: .75;
+    margin-bottom: 1.5pt;
 }
 
 .rowcount7 .major {
-    font-size: 17pt;
+    font-size: 16.5pt;
 }
 
 .rowcount8 .major {
     font-size: 16pt;
     margin-top: -2pt;
+    margin-bottom: -4pt;
 }
 
 .rowcount8 .minor {
