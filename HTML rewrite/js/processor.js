@@ -1,10 +1,22 @@
 'use strict';
 
-function test_process () {
+function process(){
 	var results = processTSVrounds(document.getElementById('csv_input').value)
 	var teamNames = processNames(document.getElementById('csv_teams').value)
 
-	$('#test_output').empty().append(wrapTables(toTablesOutput(results, teamNames), 6, true))
+	$('#output').empty().append(wrapTables(toTablesOutput(results, teamNames), 6, true))
+
+	
+	$('#instructions').hide();
+	$('#output').show();
+
+	window.print();
+
+	window.setTimeout(function(){
+		$('#instructions').show();
+		$('#output').hide();
+	}, 500)
+
 }
 
 /**

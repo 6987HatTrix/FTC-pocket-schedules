@@ -72,7 +72,8 @@ table.teamSchedule {
 }
 
 .oneSchedule {
-    max-width: 298;/* (11 - 6*.25) / 3 */
+    max-width: 3.15in;/* (11 - 6*.25) / 3 */
+    width: 3.15in;/* (11 - 6*.25) / 3 */
     height: 3.75in;/* (8.5 - 4*.25) / 2 */
     overflow: hidden;
     /* padding-left: 0.25in; */
@@ -105,7 +106,7 @@ td.record_cell.color_red {
 }
 
 
-/* Dynamic adjustment */
+/* Dynamic font size and spacing adjustment */
 
 .rowcount5 .recipient {
     margin-top: 2pt;
@@ -178,6 +179,15 @@ td.record_cell.color_red {
 }
 
 /* Printing */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div#instructions {
+    margin: 8;
+}
+
 @media print {
     div.printPage {page-break-inside: avoid;}
 }
@@ -191,7 +201,7 @@ td.record_cell.color_red {
 
 .printpage {
     max-height: 8in;
-    max-width: 11in;
+    max-width: 11.5in;
     width: 11in;
     height: 8.5in;
     /* padding: 0.25in 0.25in 0 0.25in; */

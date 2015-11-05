@@ -11,42 +11,45 @@
 </head>
 <body>
 
-<h1> {Before the Tournament} </h1>
-<div id='step1'>
-	<h2 class='instructionHeadings'>
-		Step 1: Prepare a Team List
-	</h2>
-	TODO: write better instructions here. <br>
-	Download <a href="Template.xlsx" download>this</a>. Fill it out. Paste in the first grey box.
-	 <br> <br>
-	Input (tsv of teamnumber, teamname):
-			<br>
-	<textarea id="csv_teams" placeholder="1024	Power Fliers&#13;&#10;2048	MinecraftBots&#13;&#10;..."></textarea>
+<div id="instructions">
+	<h1> {Before the Tournament} </h1>
+	<div id='step1'>
+		<h2 class='instructionHeadings'>
+			Step 1: Prepare a Team List
+		</h2>
+		TODO: write better instructions here. <br>
+		Download <a href="Template.xlsx" download>this</a>. Fill it out. Paste in the first grey box.
+		 <br> <br>
+		Input (tsv of teamnumber, teamname):
+				<br>
+		<textarea id="csv_teams" placeholder="1024	Power Fliers&#13;&#10;2048	MinecraftBots&#13;&#10;..."></textarea>
 
-</div>
+	</div>
 
 
 
-<div id='step2'>
-	<h2 class='instructionHeadings'>
-	Step 2: ...
-	</h2>
+	<div id='step2'>
+		<h2 class='instructionHeadings'>
+		Step 2: ...
+		</h2>
 
-	<br><br>
-	Input (tsv of roundnumber, r1, r2, b1, b2):
-	<br>
-	<textarea id="csv_input" placeholder="1	20	30	40	50
-2	30	20	50	40
-..."></textarea>
-		
-	<br>
-	<button onClick="test_process()">Process</button>
-	<br><br>
-</div>
+		<br><br>
+		Input (tsv of roundnumber, r1, r2, b1, b2):
+		<br>
+		<textarea id="csv_input" placeholder="1	20	30	40	50
+	2	30	20	50	40
+	..."></textarea>
 
+		<br>
+		<button onClick="process()">Process</button>
+		<br><br>
+	</div>
 
 Output:<br>
-<div style="color:darkgreen" id="test_output">
+</div>
+
+
+<div id="output">
 
 </div>
 
