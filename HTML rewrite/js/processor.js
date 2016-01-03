@@ -4,7 +4,7 @@ function process(){
 	var results = processTSVrounds(document.getElementById('csv_input').value)
 	var teamNames = processNames(document.getElementById('csv_teams').value)
 
-	$('#output').empty().append(wrapTables(toTablesOutput(results, teamNames), 6, true))
+	$('#output').empty().append(wrapTables(toTablesOutput(results, teamNames), document.getElementById("print_copies").value, document.getElementById('print_collate').checked))
 
 	
 	$('#instructions').hide();
