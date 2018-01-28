@@ -9,8 +9,8 @@ or (if you do not expect to have internet access) the entire system can be [down
 
 ## Stuff to do
 
-[x] Write better instructions
-[ ] Beautify the instructions document
-[ ] Allow a graphical way to choose how many copies to print and whether to collate them
-[ ] Automatically generate a test set of rounds so people can test their team lists before the tournament
-[ ] Add a manifest so the site can operate offline at a tournament
+- [x] Write better instructions
+- [ ] Beautify the instructions document
+- [ ] Allow a graphical way to choose how many copies to print and whether to collate them
+- [ ] Automatically generate a test set of rounds so people can test their team lists before the tournament
+- [ ] Add a manifest so the site can operate offline at a tournament
