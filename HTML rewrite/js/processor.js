@@ -230,10 +230,18 @@ function toTablesOutput (records, teamNames) {
 
 		var teamNum = teamList[j]
 		var record = records[teamNum]
+
+		var subtitle = 'Pocket schedule for';
+
+		var your_name = $('#your_name').val();
+
+		if (your_name.length > 0){
+			subtitle = 'Pocket schedule from ' + your_name + ' to';
+		}
 		
 		// Build the "title" of the schedule, consisting of the attribution and recipient name
 		var title = $('<div>').addClass('scheduleTitle')
-		.append($('<div>').addClass('smallTitle').text('Pocket schedule from ... to'))
+		.append($('<div>').addClass('smallTitle').text(subtitle))
 		.append($('<div>').addClass('recipient').text(teamNum + ": " + teamNames[teamNum]))
 
 		var table = $("<table>").addClass('teamSchedule')
